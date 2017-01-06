@@ -150,6 +150,9 @@ public class Main extends Application {
                 if (Pall.getBoundsInParent().intersects(auk9.getBoundsInParent())) {
                     System.out.println("Game Over");
                     pane.getChildren().removeAll(Pall);}
+                if (Pall.getBoundsInParent().intersects(auk10.getBoundsInParent())) {
+                    System.out.println("Game Over");
+                    pane.getChildren().removeAll(Pall);}
 
                  if (Pall.getBoundsInParent().intersects(auk.getBoundsInParent())) {
                     System.out.println("You Win");
