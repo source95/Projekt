@@ -1,21 +1,18 @@
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.scene.*;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
 import javafx.scene.image.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.stage.Stage;
 
-
+/**
+ * Created by Filip
+ */
   /**
  * Juhtimiseks kasuta nooleklahvid ja TAB
   */
@@ -24,11 +21,9 @@ public class Main extends Application {
     private static final double W = 850, H = 600;
     Line line1,line2,line3,line4,line5,line6,line7,line8,line9,line10;
 
-
     private static final String Pall_Source =
             "http://icons.iconarchive.com/icons/icons-land/sport/32/Tennis-Ball-icon.png";
-         //  "http://icons.iconarchive.com/icons/icons-land/metro-raster-sport/24/Soccer-Ball-icon.png";
-        //from http://www.iconarchive.com/show/metro-raster-sport-icons-by-icons-land/Soccer-Ball-icon.html
+              //from http://www.iconarchive.com/show/metro-raster-sport-icons-by-icons-land/Soccer-Ball-icon.html
 
     private Image PallImage;
     private Node  Pall;
@@ -41,7 +36,7 @@ public class Main extends Application {
         PallImage = new Image(Pall_Source);
         Pall = new ImageView(PallImage);
 
-        // creating golfcourse with lines
+        // "golfi" valjaku loomine
         line1 = new Line(50,200,500,200);
         line2 = new Line(50,300,650,300);
         line3 = new Line(50,200,50,300);
@@ -53,6 +48,7 @@ public class Main extends Application {
         line9 = new Line(50,500,50,300);
         line10 = new Line(150,400,800,400);
 
+        //Aukud valjakul
         Circle auk = new Circle(12);
         Circle auk2 = new Circle(12);
         Circle auk3 = new Circle(12);
@@ -71,27 +67,27 @@ public class Main extends Application {
         auk5.setCenterX(520);      auk5.setCenterY(460);
         auk6.setCenterX(115);      auk6.setCenterY(430);
         auk7.setCenterX(600);      auk7.setCenterY(210);
-        auk8.setCenterX(410);      auk8.setCenterY(360);
+        auk8.setCenterX(430);      auk8.setCenterY(370);
         auk9.setCenterX(705);      auk9.setCenterY(120);
         auk10.setCenterX(740);     auk10.setCenterY(380);
         auk.setFill(Color.YELLOW);
 
-        Group dungeon = new Group(Pall);
+        Group pane = new Group(Pall);
         movePallTo(100,250);
-        Scene scene = new Scene(dungeon, W, H, Color.GREEN);
+        Scene scene = new Scene(pane, W, H, Color.GREEN);
 
-        dungeon.getChildren().addAll(auk,auk2,auk3,auk4,auk5,auk6,auk7,auk8,
+        pane.getChildren().addAll(auk,auk2,auk3,auk4,auk5,auk6,auk7,auk8,
                 auk9,auk10,line1,line2,line3,line4,line5,line6,line7,line8,line9,line10);
 
         scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
                 switch (event.getCode()) {
-                    case UP:    goUP = true; break;
-                    case DOWN:  goDown = true; break;
+                    case UP:    goUP    = true; break;
+                    case DOWN:  goDown  = true; break;
                     case LEFT:  goLeft  = true; break;
-                    case RIGHT: goRight  = true; break;
-                    case TAB: running = true; break;
+                    case RIGHT: goRight = true; break;
+                    case TAB:   running = true; break;
                 }
                 //Klahv X paneb kinni mang
                 if (event.getCode().equals(KeyCode.X)) {
@@ -105,11 +101,11 @@ public class Main extends Application {
             @Override
             public void handle(KeyEvent event) {
                 switch (event.getCode()) {
-                    case UP:    goUP = false; break;
-                    case DOWN:  goDown = false; break;
+                    case UP:    goUP    = false; break;
+                    case DOWN:  goDown  = false; break;
                     case LEFT:  goLeft  = false; break;
-                    case RIGHT: goRight  = false; break;
-                    case TAB: running = false; break;
+                    case RIGHT: goRight = false; break;
+                    case TAB:   running = false; break;
                 }
             }
         });
@@ -130,49 +126,37 @@ public class Main extends Application {
 
                 movePallBy(dx, dy);
 
-
                 if (Pall.getBoundsInParent().intersects(auk2.getBoundsInParent())) {
-                    System.out.println("Game Over");}
+                    System.out.println("Game Over");
+                    pane.getChildren().removeAll(Pall);}
                 if  (Pall.getBoundsInParent().intersects(auk3.getBoundsInParent())) {
-                    System.out.println("Game Over");}
+                    System.out.println("Game Over");
+                    pane.getChildren().removeAll(Pall);}
                 if  (Pall.getBoundsInParent().intersects(auk4.getBoundsInParent())) {
-                    System.out.println("Game Over");}
+                    System.out.println("Game Over");
+                    pane.getChildren().removeAll(Pall);}
                 if (Pall.getBoundsInParent().intersects(auk5.getBoundsInParent())) {
-                    System.out.println("Game Over");}
+                    System.out.println("Game Over");
+                    pane.getChildren().removeAll(Pall);}
                 if (Pall.getBoundsInParent().intersects(auk6.getBoundsInParent())) {
-                    System.out.println("Game Over");}
+                    System.out.println("Game Over");
+                    pane.getChildren().removeAll(Pall);}
                 if (Pall.getBoundsInParent().intersects(auk7.getBoundsInParent())) {
-                    System.out.println("Game Over");}
+                    System.out.println("Game Over");
+                    pane.getChildren().removeAll(Pall);}
                 if (Pall.getBoundsInParent().intersects(auk8.getBoundsInParent())) {
-                    System.out.println("Game Over");}
+                    System.out.println("Game Over");
+                    pane.getChildren().removeAll(Pall);}
                 if (Pall.getBoundsInParent().intersects(auk9.getBoundsInParent())) {
-                    System.out.println("Game Over");}
+                    System.out.println("Game Over");
+                    pane.getChildren().removeAll(Pall);}
 
                  if (Pall.getBoundsInParent().intersects(auk.getBoundsInParent())) {
                     System.out.println("You Win");
+                    // pane.getChildren().removeAll(Pall);
                     //Application.launch(ReloadApp.class); //saab kasutada restartimiseks
                 }
-/*
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION, "Game Over", ButtonType.OK);
-                        alert.getDialogPane().setMinHeight(50);
-                        alert.show();
-
-                    Alert alert = new Alert(Alert.AlertType.WARNING,
-                            "Game Over",
-                            ButtonType.YES, ButtonType.NO);
-
-                    Optional<ButtonType> result = alert.showAndWait();
-                    if (result.get() == ButtonType.YES){
-                        // ... user chose YES
-                        System.out.println("restart");
-                    } else {
-                        // ... user chose NO or closed the dialog
-                        System.out.println("shut");
-                    }
-*/
-                    //dungeon.getChildren().removeAll(Pall);
                 }
-
         };
         timer.start();
     }
@@ -192,6 +176,8 @@ public class Main extends Application {
     private void movePallTo(double x, double y) {
         final double cx = Pall.getBoundsInLocal().getWidth()  / 2;
         final double cy = Pall.getBoundsInLocal().getHeight() / 2;
+       // final double lx = line1.getBoundsInParent().getWidth()  / 2;
+        //final double ly = line1.getBoundsInParent().getHeight() / 2;
 
         if (x - cx >= 0 &&
                 x + cx <= W &&
@@ -199,34 +185,17 @@ public class Main extends Application {
                 y + cy <= H) {
             Pall.relocate(x - cx, y - cy);
         }
+        /*
+        if (Pall.getBoundsInParent().intersects(line5.getBoundsInParent())
+                || Pall.getBoundsInParent().intersects(line3.getBoundsInParent())
+                || Pall.getBoundsInParent().intersects(line4.getBoundsInParent())
+                || Pall.getBoundsInParent().intersects(line7.getBoundsInParent())
+                || Pall.getBoundsInParent().intersects(line9.getBoundsInParent())) {
+            System.out.println("warn");
+            Pall.relocate(x - cx, y - cy);
+        }*/
     }
-
-  /*  //AnimationTimer timer2 =
-            new AnimationTimer() {
-        @Override
-        public void handle(long now) {
-            ////////////////
-            //double PallY = Pall.getCenterY();
-            //double newballY = PallY + directiony;
-            // if ball touches vertical walls
-            if (Pall.getBoundsInParent().intersects(line5.getBoundsInParent())
-                    || Pall.getBoundsInParent().intersects(line3.getBoundsInParent())
-                    || Pall.getBoundsInParent().intersects(line4.getBoundsInParent())
-                    || Pall.getBoundsInParent().intersects(line7.getBoundsInParent())
-                    || Pall.getBoundsInParent().intersects(line9.getBoundsInParent())) {
-                // changes direction
-                System.out.println("wall");
-                //directionx = directionx * -1;
-            }
-        }
-
-    };
-    //timer2.start();
-*/
-
-            public static void main(String[] args) { launch(args);
-
-            }
+            public static void main(String[] args) { launch(args); }
 
 }
 
