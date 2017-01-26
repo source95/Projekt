@@ -89,7 +89,7 @@ public class Main extends Application {
                     case RIGHT: goRight = true; break;
                     case TAB:   running = true; break;
                 }
-                //Klahv X paneb kinni mang
+                //Klahv "X" paneb kinni mang
                 if (event.getCode().equals(KeyCode.X)) {
                     System.out.println("BayBay!");
                     primaryStage.close();
