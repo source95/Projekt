@@ -23,7 +23,7 @@ import javafx.stage.Stage;
  * Created by Filip
  */
 /**
- * Juhtimiseks kasuta nooleklahvid ja TAB
+ * Juhtimiseks kasuta nooleklahvid ja 2xkiirus - TAB
  */
 public class Main extends Application {
 
